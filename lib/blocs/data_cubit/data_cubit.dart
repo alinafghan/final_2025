@@ -20,4 +20,38 @@ class DataCubit extends Cubit<DataState> {
       rethrow;
     }
   }
+
+  Future<List<Data>> getAllData() async {
+    emit(GetAllDataLoading());
+    try {
+      List<Data> dataList = await dataRepository.fetchData();
+      emit(GetAllDataLoaded(list: dataList));
+      return dataList;
+    } catch (e) {
+      emit(GetAllDataError());
+      rethrow;
+    }
+  }
+
+  Future<void> updateData(Data data) async {
+    emit(UpdateDataLoading());
+    try {
+      await dataRepository.updateData(data);
+      emit(UpdateDataLoaded());
+    } catch (e) {
+      emit(UpdateDataError());
+      rethrow;
+    }
+  }
+
+  Future<void> deleteData(String id) async {
+    emit(DeleteDataLoading());
+    try {
+      await dataRepository.deleteData(id);
+      emit(DeleteDataLoaded());
+    } catch (e) {
+      emit(DeleteDataError());
+      rethrow;
+    }
+  }
 }
