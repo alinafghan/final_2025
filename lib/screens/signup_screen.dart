@@ -1,4 +1,4 @@
-import 'package:final_2025/blocs/bloc/authentication_bloc.dart';
+import 'package:final_2025/blocs/auth_bloc/authentication_bloc.dart';
 import 'package:final_2025/models/my_user.dart';
 import 'package:final_2025/repositories/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,25 +38,10 @@ class _SignupScreenState extends State<SignupScreen> {
     context.read<AuthenticationBloc>().add(
           EmailSignupRequested(user: user, password: password),
         );
-    // MyUser? user2 = await _provider.emailSignUp(user, password);
-
-    // if (user2 != null && mounted) {
-    //   context.go('/home');
-    // }
   }
 
   void signUpWithGoogle() {
     context.read<AuthenticationBloc>().add(GoogleSignupRequested());
-
-    // if (user.user != null) {
-    //   MyUser user2 = MyUser(
-    //     userId: user.user!.uid,
-    //     username: user.user!.displayName,
-    //     email: user.user!.email!,
-    //     profileUrl: user.user!.photoURL,
-    //   );
-
-    // context.read<AuthenticationBloc>().add(SaveUserToFirestore(user: user2));
 
     if (mounted) {
       context.go('/home');

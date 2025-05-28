@@ -1,4 +1,4 @@
-import 'package:final_2025/blocs/bloc/authentication_bloc.dart';
+import 'package:final_2025/blocs/auth_bloc/authentication_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
