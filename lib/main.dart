@@ -1,6 +1,7 @@
 import 'package:final_2025/blocs/bloc/authentication_bloc.dart';
 import 'package:final_2025/repositories/auth_repository.dart';
 import 'package:final_2025/screens/home_screen.dart';
+import 'package:final_2025/screens/next_screen.dart';
 import 'package:final_2025/screens/signup_screen.dart';
 import 'package:final_2025/screens/login_screen.dart';
 import 'package:final_2025/screens/splash_screen.dart';
@@ -66,6 +67,18 @@ class MyApp extends StatelessWidget {
                   child: const HomeScreen(),
                 );
               },
+              routes: <RouteBase>[
+                GoRoute(
+                  path: 'next',
+                  builder: (BuildContext context, GoRouterState state) {
+                    return BlocProvider(
+                      create: (context) =>
+                          AuthenticationBloc(authRepository: AuthRepository()),
+                      child: const NextScreen(),
+                    );
+                  },
+                ),
+              ],
             ),
             GoRoute(
               path: 'login',

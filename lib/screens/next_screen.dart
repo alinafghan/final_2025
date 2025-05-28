@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class NextScreen extends StatelessWidget {
+  const NextScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,9 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 24)),
             TextButton(
               onPressed: () {
-                context.push('/home/next'); // Navigate to a feature screen
+                context.pop();
               }, // Placeholder for future functionality
-              child: Text('next'),
+              child: Text('back'),
             ),
           ],
         ),
