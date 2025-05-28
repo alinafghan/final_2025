@@ -24,8 +24,8 @@ class AuthenticationState extends Equatable {
 }
 
 class GoogleSignUpSuccess extends AuthenticationState {
-  final User? user;
   @override
+  final User? user;
   final MyUser myUser;
 
   const GoogleSignUpSuccess({required this.myUser, this.user})

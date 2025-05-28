@@ -9,6 +9,7 @@ class DataRepository {
   Future<Data> saveData(Data data) async {
     try {
       DocumentReference docRef = await dataCollection.add(data.toJson());
+      updateData(data.copyWith(id: docRef.id));
       return data.copyWith(id: docRef.id);
     } catch (e) {
       _logger.e('Error saving data: $e');
@@ -38,6 +39,7 @@ class DataRepository {
   }
 
   Future<void> deleteData(String id) async {
+    print('Deleting data with ID: $id');
     try {
       await dataCollection.doc(id).delete();
     } catch (e) {

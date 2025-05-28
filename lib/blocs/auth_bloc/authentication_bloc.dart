@@ -67,7 +67,7 @@ class AuthenticationBloc
     });
     on<Logout>((event, emit) async {
       try {
-        User? user = await authRepository.signOut();
+        await authRepository.signOut();
         emit(LogoutSuccess());
       } catch (e) {
         emit(AuthenticationError(e.toString()));

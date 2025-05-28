@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class NextScreen extends StatelessWidget {
-  NextScreen({super.key});
+class UpdateScreen extends StatelessWidget {
+  UpdateScreen({super.key});
+  final TextEditingController idController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController imageUrlController = TextEditingController();
@@ -30,13 +31,16 @@ class NextScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Welcome to the Save Data Screen!',
+            const Text('Welcome to the Update Data Screen!',
                 style: TextStyle(fontSize: 24)),
             TextButton(
               onPressed: () {
                 context.pop();
               }, // Placeholder for future functionality
               child: Text('back'),
+            ),
+            TextField(
+              controller: idController,
             ),
             TextField(
               controller: nameController,
@@ -49,16 +53,16 @@ class NextScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                context.read<DataCubit>().saveData(
+                context.read<DataCubit>().updateData(
                       Data(
-                        id: '',
+                        id: idController.text,
                         name: nameController.text,
                         description: descriptionController.text,
                         imageUrl: imageUrlController.text,
                       ),
                     );
               },
-              child: const Text('Submit'),
+              child: const Text('Update'),
             ),
           ],
         ),

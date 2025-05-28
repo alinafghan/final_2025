@@ -1,10 +1,12 @@
 import 'package:final_2025/blocs/auth_bloc/authentication_bloc.dart';
+import 'package:final_2025/blocs/data_cubit/data_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class DeleteScreen extends StatelessWidget {
+  DeleteScreen({super.key});
+  final TextEditingController idController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,31 +27,22 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Welcome to the Home Screen!',
+            const Text('Welcome to the Delete Data Screen!',
                 style: TextStyle(fontSize: 24)),
             TextButton(
               onPressed: () {
-                context.push('/home/next'); // Navigate to a feature screen
+                context.pop();
               }, // Placeholder for future functionality
-              child: Text('next'),
+              child: Text('back'),
             ),
-            TextButton(
-              onPressed: () {
-                context.push('/home/update'); // Navigate to a feature screen
-              }, // Placeholder for future functionality
-              child: Text('update'),
+            TextField(
+              controller: idController,
             ),
-            TextButton(
+            ElevatedButton(
               onPressed: () {
-                context.push('/home/delete'); // Navigate to a feature screen
-              }, // Placeholder for future functionality
-              child: Text('delete'),
-            ),
-            TextButton(
-              onPressed: () {
-                context.push('/home/all'); // Navigate to a feature screen
-              }, // Placeholder for future functionality
-              child: Text('all'),
+                context.read<DataCubit>().deleteData(idController.text);
+              },
+              child: const Text('Delete'),
             ),
           ],
         ),
