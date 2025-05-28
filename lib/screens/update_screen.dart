@@ -5,11 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class UpdateScreen extends StatelessWidget {
-  UpdateScreen({super.key});
+class UpdateScreen extends StatefulWidget {
+  final Data data;
+  const UpdateScreen({super.key, required this.data});
+
+  @override
+  State<UpdateScreen> createState() => _UpdateScreenState();
+}
+
+class _UpdateScreenState extends State<UpdateScreen> {
+  @override
+  void initState() {
+    idController.text = widget.data.id;
+    nameController.text = widget.data.name;
+    descriptionController.text = widget.data.description;
+    imageUrlController.text = widget.data.imageUrl;
+    super.initState();
+  }
+
   final TextEditingController idController = TextEditingController();
+
   final TextEditingController nameController = TextEditingController();
+
   final TextEditingController descriptionController = TextEditingController();
+
   final TextEditingController imageUrlController = TextEditingController();
 
   @override

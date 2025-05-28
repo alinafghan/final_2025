@@ -1,5 +1,6 @@
 import 'package:final_2025/blocs/auth_bloc/authentication_bloc.dart';
 import 'package:final_2025/blocs/data_cubit/data_cubit.dart';
+import 'package:final_2025/models/data.dart';
 import 'package:final_2025/repositories/auth_repository.dart';
 import 'package:final_2025/repositories/data_repository.dart';
 import 'package:final_2025/screens/all_screen.dart';
@@ -107,7 +108,7 @@ class MyApp extends StatelessWidget {
                           ),
                         )
                       ],
-                      child: UpdateScreen(),
+                      child: UpdateScreen(data: state.extra as Data),
                     );
                   },
                 ),

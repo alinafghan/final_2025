@@ -1,4 +1,5 @@
 import 'package:final_2025/blocs/auth_bloc/authentication_bloc.dart';
+import 'package:final_2025/models/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -35,7 +36,12 @@ class HomeScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                context.push('/home/update'); // Navigate to a feature screen
+                context.push('/home/update',
+                    extra: Data(
+                        id: '',
+                        name: '',
+                        description: '',
+                        imageUrl: '')); // Navigate to a feature screen
               }, // Placeholder for future functionality
               child: Text('update'),
             ),

@@ -16,7 +16,6 @@ class _AllScreenState extends State<AllScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     context.read<DataCubit>().getAllData();
     super.initState();
   }
@@ -64,6 +63,23 @@ class _AllScreenState extends State<AllScreen> {
                           // leading: data.imageUrl.isNotEmpty
                           //     ? Image.network(data.imageUrl)
                           //     : null,
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.edit),
+                                onPressed: () {
+                                  context.go('/home/update', extra: data);
+                                },
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.delete),
+                                onPressed: () {
+                                  context.read<DataCubit>().deleteData(data.id);
+                                },
+                              ),
+                            ],
+                          ),
                         );
                       },
                     ),
