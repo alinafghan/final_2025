@@ -1,17 +1,14 @@
 import 'package:final_2025/blocs/auth_bloc/authentication_bloc.dart';
 import 'package:final_2025/blocs/data_cubit/data_cubit.dart';
-import 'package:final_2025/models/data.dart';
 import 'package:final_2025/repositories/auth_repository.dart';
 import 'package:final_2025/repositories/data_repository.dart';
-import 'package:final_2025/screens/all_screen.dart';
-import 'package:final_2025/screens/delete_screen.dart';
+import 'package:final_2025/screens/firebase_screen.dart';
 import 'package:final_2025/screens/home_screen.dart';
-import 'package:final_2025/screens/next_screen.dart';
 import 'package:final_2025/screens/signup_screen.dart';
 import 'package:final_2025/screens/login_screen.dart';
 import 'package:final_2025/screens/splash_screen.dart';
-import 'package:final_2025/screens/update_screen.dart';
-import 'package:final_2025/utils/StreamToListenable.dart';
+import 'package:final_2025/screens/static_screen.dart';
+import 'package:final_2025/utils/stream_to_listenable.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,7 +72,7 @@ class MyApp extends StatelessWidget {
               },
               routes: <RouteBase>[
                 GoRoute(
-                  path: 'next',
+                  path: 'firebase',
                   builder: (BuildContext context, GoRouterState state) {
                     return MultiBlocProvider(
                       providers: [
@@ -89,12 +86,12 @@ class MyApp extends StatelessWidget {
                           ),
                         )
                       ],
-                      child: NextScreen(),
+                      child: FirebaseScreen(),
                     );
                   },
                 ),
                 GoRoute(
-                  path: 'update',
+                  path: 'static',
                   builder: (BuildContext context, GoRouterState state) {
                     return MultiBlocProvider(
                       providers: [
@@ -108,45 +105,7 @@ class MyApp extends StatelessWidget {
                           ),
                         )
                       ],
-                      child: UpdateScreen(data: state.extra as Data),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: 'delete',
-                  builder: (BuildContext context, GoRouterState state) {
-                    return MultiBlocProvider(
-                      providers: [
-                        BlocProvider(
-                          create: (context) => AuthenticationBloc(
-                              authRepository: AuthRepository()),
-                        ),
-                        BlocProvider(
-                          create: (context) => DataCubit(
-                            dataRepository: DataRepository(),
-                          ),
-                        )
-                      ],
-                      child: DeleteScreen(),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: 'all',
-                  builder: (BuildContext context, GoRouterState state) {
-                    return MultiBlocProvider(
-                      providers: [
-                        BlocProvider(
-                          create: (context) => AuthenticationBloc(
-                              authRepository: AuthRepository()),
-                        ),
-                        BlocProvider(
-                          create: (context) => DataCubit(
-                            dataRepository: DataRepository(),
-                          ),
-                        )
-                      ],
-                      child: AllScreen(),
+                      child: StaticScreen(),
                     );
                   },
                 ),

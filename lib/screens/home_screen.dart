@@ -30,32 +30,15 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 24)),
             TextButton(
               onPressed: () {
-                context.push('/home/next'); // Navigate to a feature screen
+                context.push('/home/firebase'); // Navigate to a feature screen
               }, // Placeholder for future functionality
-              child: Text('next'),
+              child: Text('question one'),
             ),
             TextButton(
               onPressed: () {
-                context.push('/home/update',
-                    extra: Data(
-                        id: '',
-                        name: '',
-                        description: '',
-                        imageUrl: '')); // Navigate to a feature screen
+                context.push('/home/static'); // Navigate to a feature screen
               }, // Placeholder for future functionality
-              child: Text('update'),
-            ),
-            TextButton(
-              onPressed: () {
-                context.push('/home/delete'); // Navigate to a feature screen
-              }, // Placeholder for future functionality
-              child: Text('delete'),
-            ),
-            TextButton(
-              onPressed: () {
-                context.push('/home/all'); // Navigate to a feature screen
-              }, // Placeholder for future functionality
-              child: Text('all'),
+              child: Text('question two'),
             ),
           ],
         ),
