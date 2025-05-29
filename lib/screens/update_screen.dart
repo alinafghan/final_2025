@@ -23,6 +23,15 @@ class _UpdateScreenState extends State<UpdateScreen> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    idController.dispose();
+    nameController.dispose();
+    descriptionController.dispose();
+    imageUrlController.dispose();
+    super.dispose();
+  }
+
   final TextEditingController idController = TextEditingController();
 
   final TextEditingController nameController = TextEditingController();

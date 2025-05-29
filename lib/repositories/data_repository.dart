@@ -39,7 +39,6 @@ class DataRepository {
   }
 
   Future<void> deleteData(String id) async {
-    print('Deleting data with ID: $id');
     try {
       await dataCollection.doc(id).delete();
     } catch (e) {

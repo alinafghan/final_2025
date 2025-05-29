@@ -38,8 +38,8 @@ class GoogleSignUpSuccess extends AuthenticationState {
 class SaveUserToFirestoreSuccess extends AuthenticationState {}
 
 class EmailSignupRequestedSuccess extends AuthenticationState {
-  final User? user;
   @override
+  final User? user;
   final MyUser myUser;
 
   const EmailSignupRequestedSuccess({required this.myUser, this.user})
